@@ -1,4 +1,4 @@
-module grpc-demo-proto
+module github.com/archine/grpc-demo-proto
 
 go 1.24
 
