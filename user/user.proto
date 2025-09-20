@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package grpc.demo.user;
+
+option go_package = "github.com/archine/grpc-demo-proto/user";
+
+service UserService {
+  // 创建用户
+  rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
+  // 根据id获取用户
+  rpc GetUser (GetUserRequest) returns (GetUserResponse);
+  // 获取用户列表
+  rpc FindUserList (FindUserListRequest) returns (FindUserListResponse);
+}
+
+// 创建用户
+message CreateUserRequest {
+  string name = 1;  // 用户名
+  int32 age = 2;    // 年龄
+  string email = 3; // 邮箱
+}
+
+message CreateUserResponse {
+  int32 id = 1;
+}
+
+// 根据id获取用户
+message GetUserRequest {
+  int32 id = 1; // 用户ID
+}
+
+message User {
+  int32 id = 1;       // 用户ID
+  string name = 2;    // 用户名
+  int32 age = 3;      // 年龄
+  string email = 4;   // 邮箱
+  int32 created_at = 5; // 创建时间
+}
+
+message GetUserResponse {
+  User user = 1; // 用户信息
+}
+
+// 获取用户列表
+message FindUserListRequest {}
+
+message FindUserListResponse {
+  repeated User users = 1; // 用户列表
+}
